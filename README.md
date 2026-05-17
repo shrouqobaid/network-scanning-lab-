@@ -1,4 +1,4 @@
-# Network Scanning $ Analysis lab
+# Network Scanning & Analysis lab
 
 ## Objective 
 Simulate a basic network scan using nmap and analyze open ports and service.
@@ -27,4 +27,4 @@ in a non-lab environment.
 ## Disclaimer
 This project was performed in controlled lab environment.
  - [Analysis repot](Coming Soon)
-# network-scanning-lab-
+
