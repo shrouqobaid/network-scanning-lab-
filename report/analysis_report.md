@@ -20,7 +20,8 @@ The scan revealed serveral open services, some of which are running outdated ver
 ## 3. Methodology 
 A service Version Detection scan (`-sV`) was performed using **nmap** to identify the software versions 
 running on the detected ports 
-
+### Scan Evidence
+![Nmap Scan Results](../screenshots/nmap_results.png)
 
 
 
@@ -28,10 +29,10 @@ running on the detected ports
 
  
 ### Finding1: Outdated SSH Version
-- **port:** 22/tcp\
+- **port:** 22/tcp
 - **service:** SSH 
 - **severity:** Medium 
-- ** Analysis:** OpenSSH 7.4 is an older version.
+- **Analysis:** OpenSSH 7.4 is an older version.
 while not critical in all configurations, older versions often have know CVEs (common Vulnerabilities and Exposures)
 such as potential user enumeration or denial of service risks.
 
