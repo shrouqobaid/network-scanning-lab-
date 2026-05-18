@@ -11,6 +11,6 @@ A comprehensive security assessment of `scanme.nmap.org` using industry-standard
 - [Analysis Report](report/analysis_report.md)
 - [Defensive Plan](report/defensive_plan.md)
 - [Evidence](screenshots/)
-- [Scan Results](scan-results/)
+- [Scan Results](scan-results/scan_report.md)
 ---
 *Developed as part of Cybersecurity Professional Training.*
