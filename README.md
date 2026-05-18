@@ -6,6 +6,17 @@
 
 A comprehensive security assessment of `scanme.nmap.org` using industry-standard tools to identify open services and potential security risks.
 
+
+## Technical Evidence Gallery
+
+| 1. Port Identification | 2. Service Discovery |
+|---|---|
+| ![Ports](screenshots/ports.png) | ![Services](screenshots/services.png) |
+
+| 3. OS Fingerprinting | 4. Version Analysis |
+|---|---|
+| ![OS](screenshots/os.png) | ![Versions](screenshots/versions.png) |
+
 ## Project Structure
 
 - [Analysis Report](report/analysis_report.md)
