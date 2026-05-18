@@ -1,30 +1,14 @@
-# Network Scanning & Analysis lab
+ ## Network Scanning & Vulnerability Analysis Lab
 
-## Objective 
-Simulate a basic network scan using nmap and analyze open ports and service.
+![Nmap](https://img.shields.io/badge/Tools-Nmap-blue) ![Security](https://img.shields.io/badge/Focus-Network--Security-green) ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-## Tools used 
-- Nmap 
-- Kali linux 
+## Project Description
+A comprehensive security assessment of `scanme.nmap.org` using industry-standard tools to identify open services and potential security risks.
 
-## Methodology
-- performed network scan using Nmap 
-- Idintified open ports and services 
-- Analyzed potential security risks 
+## Project Structure
+- [Analysis Report](report/analysis_report.md) - Detailed findings and CVE research.
+- [Defensive Plan](report/defensive_plan.md) - Recommendations for securing the infrastructure.
+- [Evidence](screenshots/) - Visual proof of scan results.
 
-## Key Findings 
-- Open ports identified :22/tcp (SSH), 80/tcp (HTTP).
-- Services Versions : SSH: OpenSSH 7.4 (protocol 2.0) HTTP: Apache httpd 2.4.6 (CentOS)
-
-- **Security Observation:** The scan detected outdated service version which could be potential entry points for attackers
-in a non-lab environment.
-
-## Files
-- [Scan results](./scan-results/)  
-- [Analysis report](./report)
-- [Screenshots](./screenshots/)
- 
-## Disclaimer
-This project was performed in controlled lab environment.
- 
-
+---
+*Developed as part of Cybersecurity Professional Training.*
