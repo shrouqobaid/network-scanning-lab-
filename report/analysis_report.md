@@ -1,76 +1,49 @@
+# Vulnerability Analysis Report - Network Scanning Lab
 
-
-
-
-# Vulnerability Analysis Report -Network Scanning Lab 
-
-## 1.Executive Summary
-The goal of this assessment was to identify open ports, active service, and protocol vlunerabilities
-on the target host `scanme.nmap.org`. 
-The scan revealed serveral open services, some of which are running outdated versions that may pose a security risk.
-
+## 1. Executive Summary
+The objective of this assessment was to identify open ports, active services, and protocol vulnerabilities on the target host `scanme.nmap.org`. The scan revealed several open services, including **SSH**, **HTTP**, and **Nping-echo**. The analysis indicates that the server is running legacy software versions on Ubuntu Linux, which may be susceptible to known vulnerabilities if not properly patched or hardened.
 
 ## 2. Target Information
-- **Target"** scanme.nmap.org 
-- **IP Address:** 45.33.32.156
-- **Scan Date:** may 17,2026
+* **Target:** `scanme.nmap.org`
+* **IP Address:** 45.33.32.156
+* **Scan Date:** May 20, 2026
+* **Tool:** Nmap v7.98
 
+## 3. Methodology
+A comprehensive scan was performed using the following command:
+`nmap -sV -O scanme.nmap.org -oN my_scan_results.txt`
 
+* **Service Version Detection (-sV):** To identify software names and exact version numbers.
+* **OS Fingerprinting (-O):** To identify the underlying operating system and kernel version.
 
-## 3. Methodology 
-A service Version Detection scan (`-sV`) was performed using **nmap** to identify the software versions 
-running on the detected ports 
-### Scan Evidence
-![Nmap Scan Results](../screenshots/nmap_results.png)
+## 4. Technical Findings & Analysis
 
+| Port | Service | Version | Severity | Key Observation |
+| :--- | :--- | :--- | :--- | :--- |
+| **22/tcp** | SSH | OpenSSH 6.6.1p1 (Ubuntu) | **Medium** | Outdated version, prone to enumeration. |
+| **80/tcp** | HTTP | Apache httpd 2.4.7 (Ubuntu) | **Medium** | Early 2.4 release, potential for banner grabbing. |
+| **9929/tcp**| Nping-echo | Nping echo | **Low** | Specialized diagnostic tool service. |
+| **31337/tcp**| tcpwrapped | N/A | **Low** | Port is protected/wrapped but visible. |
 
+### Detailed Analysis:
+* **Finding 1 (SSH):** The detected **OpenSSH 6.6.1p1** is an older release. Attackers can use this information to search for specific CVEs related to the Ubuntu 14.04/16.04 era.
+* **Finding 2 (HTTP):** **Apache 2.4.7** lacks many modern security headers and patches found in newer 2.4.x releases. The version disclosure facilitates targeted exploits.
 
-## 4. Techincal Findings & Analysis 
+## 5. Vulnerability Research (CVEs)
 
- 
-### Finding1: Outdated SSH Version
-- **port:** 22/tcp
-- **service:** SSH 
-- **severity:** Medium 
-- **Analysis:** OpenSSH 7.4 is an older version.
-while not critical in all configurations, older versions often have know CVEs (common Vulnerabilities and Exposures)
-such as potential user enumeration or denial of service risks.
+* **[CVE-2016-10009] - OpenSSH Remote Code Execution**
+    * **Details:** Affects older OpenSSH versions when using SSH agent forwarding, potentially allowing code execution.
+* **[CVE-2014-0226] - Apache Buffer Overflow**
+    * **Details:** A race condition in the `mod_status` module (pre-2.4.10) could allow a remote attacker to cause a DoS or execute arbitrary code.
 
+## 6. Recommendations (Remediation)
 
-
-### Finding2 : Outdated Web Server (Apache)
-- **port:** 80/tcp
-- **service:** HTTP
-- **version:** Apache httpd 2.4.6 (CentOS)
-- **Analysis:** This version of Apache is outdated.
-it is recommended to hide the version header to prevent "Banner Grabbing" by attackers.
-
-
-
-## Vulnerability Research (CVEs)
-
-### [CVE-2016-10708] - OpenSSH Denial of Service
-
-- **Applicability:** Potential risk for OpenSSH 7.4.
-
-- **Details:** A flaw in the SSH protocol implementation could allow a remote attacker to cause a denial of service (NULL pointer dereference).
-
-- **Reference:** [NVD - CVE-2016-10708](https://nvd.nist.gov/vuln/detail/CVE-2016-10708)
-
-
-
-### [CVE-2017-15715] - Apache HTTP Server Arbitrary File Upload
-
-- **Applicability:** Affects certain configurations of Apache 2.4.x.
-
-- **Details:** A specially crafted request could bypass certain access restrictions.
-
-- **Reference:** [NVD - CVE-2017-15715](https://nvd.nist.gov/vuln/detail/CVE-2017-15715)
-
-## 5. Recommendaitons (Remediation)
-1. **patching:** Update OpenSSH and Apache to the latest stable versions.
-2. **Hardening:** Disable service banners to hide version information form unauthorized scans.
-3. **Monitoring:** implement a firewall (WAF) to fillter incoming tarffic on port 80.
+1.  **System Patching:** Update the operating system and all services (`apt update && apt upgrade`) to the latest stable versions.
+2.  **Service Hardening:**
+    * **Apache:** Set `ServerTokens Prod` in the configuration to hide specific version numbers.
+    * **SSH:** Disable root login and enforce Public Key Authentication.
+3.  **Firewall Configuration:** Close unnecessary ports like 9929 and 31337 to reduce the attack surface.
 
 ---
-*Report generated by: Shrouq Al-Mejireshi* 
+**Report Generated By:** Shrouq Al-Mejireshi
+
