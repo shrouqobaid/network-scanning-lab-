@@ -1,11 +1,9 @@
- ## Network Scanning & Vulnerability Analysis Lab
+# Network Scanning & Vulnerability Analysis Lab 🔍
 
 ![Nmap](https://img.shields.io/badge/Tools-Nmap-blue) ![Security](https://img.shields.io/badge/Focus-Network--Security-green) ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## Project Description
-
-A comprehensive security assessment of `scanme.nmap.org` using industry-standard tools to identify open services and potential security risks.
-
+A comprehensive security assessment of `scanme.nmap.org` using industry-standard tools to identify open services, operating system details, and potential security risks. This lab demonstrates the fundamental stages of reconnaissance and network enumeration.
 
 ## Technical Evidence Gallery
 
@@ -17,11 +15,26 @@ A comprehensive security assessment of `scanme.nmap.org` using industry-standard
 |---|---|
 | ![OS](screenshots/os.png) | ![Versions](screenshots/versions.png) |
 
+## Executive Analysis
+
+During this assessment, I utilized advanced Nmap flags to extract deep technical data while maintaining scan efficiency.
+
+### Key Findings:
+- **Service Enumeration:** Successfully identified open ports such as **SSH (22)** and **HTTP (80)**, including their specific version numbers.
+- **OS Fingerprinting:** Discovered the target is running a **Linux-based** kernel, allowing for targeted vulnerability research.
+- **Aggressive Scanning:** Used the `-A` flag to automate traceroute, OS detection, and common script scanning (NSE).
+
 ## Project Structure
 
-- [Analysis Report](report/analysis_report.md)
-- [Defensive Plan](report/defensive_plan.md)
-- [Evidence](screenshots/)
-- [Scan Results](scan-results/scan_report.md)
+- **[Main Scan Results](my_scan_results.txt)** - The primary output of the comprehensive scan.
+- **[Analysis Report](report/analysis_report.md)** - Detailed breakdown of findings and risk assessment.
+- **[Defensive Plan](report/defensive_plan.md)** - Recommended security controls to mitigate discovered risks.
+- **[Evidence](screenshots/)** - Visual confirmation of the terminal outputs.
+
+## Methodology
+1. **Reconnaissance:** Host discovery and reachability testing.
+2. **Stealth Scanning:** Utilizing SYN scans (`-sS`) to analyze ports.
+3. **Deep Analysis:** Version detection (`-sV`) and OS identification (`-O`) for precise mapping.
+
 ---
-*Developed as part of Cybersecurity Professional Training.*
+*Developed by Shrouq Almejireshi as part of Cybersecurity Professional Training.*
