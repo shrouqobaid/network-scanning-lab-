@@ -1,6 +1,6 @@
 # Network Scanning & Vulnerability Analysis Lab 🔍
 
-![Nmap](https://img.shields.io/badge/Tools-Nmap-blue) ![Security](https://img.shields.io/badge/Focus-Network--Security-green) ![Status](https://img.shields.io/badge/Status-Completed-success)
+![Nmap](https://img.shields.io/badge/Tools-Nmap-blue) ![Security](https://img.shields.io/badge/Focus-Network--Security-green) ![Status](https://img.shields.io/badge/Status-In_Progress-yellow)
 
 ## Project Description
 A comprehensive security assessment of `scanme.nmap.org` using industry-standard tools to identify open services, operating system details, and potential security risks. This lab demonstrates the fundamental stages of reconnaissance and network enumeration.
